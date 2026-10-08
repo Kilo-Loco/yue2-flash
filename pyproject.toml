@@ -3,4 +3,4 @@ name = "yue2-flash"
 version = "0.1.0"
 description = "Generate songs with YuE2 on Runpod Serverless using Flash"
 requires-python = ">=3.10,<3.14"
-dependencies = ["runpod-flash"]
+dependencies = ["runpod-flash", "streamlit"]

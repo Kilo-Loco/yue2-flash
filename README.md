@@ -43,6 +43,13 @@ Give each piece only the access it needs ([Runpod API key docs](https://docs.run
 | Caller key (`RUNPOD_CALLER_KEY`) | Restricted: Read/Write on the `yue2-song` endpoint only | `song.py`, `curl`, demos |
 | Worker | none | `SongGenerator` never calls the Runpod API |
 
+Or from a local web UI ([`app.py`](app.py)):
+
+```bash
+uv pip install streamlit
+streamlit run app.py
+```
+
 Or from any HTTP client:
 
 ```bash

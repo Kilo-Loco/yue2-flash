@@ -4,3 +4,6 @@ __pycache__/
 .flash/
 *.mp3
 *.pdf
+.claude/
+lyrics/
+.DS_Store

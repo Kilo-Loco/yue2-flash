@@ -50,6 +50,7 @@ class SongGenerator:
         return {
             "mp3_base64": base64.b64encode(buffer.getvalue()).decode(),
             "seconds": round(len(song.audio) / song.sample_rate, 1),
+            "truncated": song.truncated,  # True if YuE2 hit a token limit and cut the song short
         }
 
 
@@ -73,7 +74,7 @@ async def main(endpoint_id: str, prompt: str, lyrics: str | None = None):
 
     with open("song.mp3", "wb") as f:
         f.write(base64.b64decode(output["mp3_base64"]))
-    print(f"Saved song.mp3 ({output['seconds']}s)")
+    print(f"Saved song.mp3 ({output['seconds']}s, truncated: {output.get('truncated')})")
 
 
 if __name__ == "__main__":
