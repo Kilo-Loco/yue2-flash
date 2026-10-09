@@ -9,8 +9,9 @@ import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
-URL = f"https://api.runpod.ai/v2/{os.environ['ENDPOINT_ID']}"
-HEADERS = {"Authorization": f"Bearer {os.environ['RUNPOD_API_KEY']}"}
+# getenv, not os.environ[...]: `flash build` imports every file in the project, .env or not
+URL = f"https://api.runpod.ai/v2/{os.getenv('ENDPOINT_ID', '')}"
+HEADERS = {"Authorization": f"Bearer {os.getenv('RUNPOD_API_KEY', '')}"}
 
 st.title("YuE2 song generator")
 prompt = st.text_input("Style", "English, upbeat indie pop, bright female vocals, jangly guitars, 120 BPM")
