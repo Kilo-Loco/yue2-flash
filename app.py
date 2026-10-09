@@ -1,5 +1,5 @@
 # Minimal local UI for the deployed YuE2 endpoint.
-# run: streamlit run app.py   (uses RUNPOD_CALLER_KEY and ENDPOINT_ID from .env)
+# run: streamlit run app.py   (uses RUNPOD_API_KEY and ENDPOINT_ID from .env)
 import base64
 import os
 import time
@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 URL = f"https://api.runpod.ai/v2/{os.environ['ENDPOINT_ID']}"
-HEADERS = {"Authorization": f"Bearer {os.environ['RUNPOD_CALLER_KEY']}"}
+HEADERS = {"Authorization": f"Bearer {os.environ['RUNPOD_API_KEY']}"}
 
 st.title("YuE2 song generator")
 prompt = st.text_input("Style", "English, upbeat indie pop, bright female vocals, jangly guitars, 120 BPM")
