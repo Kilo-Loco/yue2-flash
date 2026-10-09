@@ -1,6 +1,6 @@
 # YuE2 song generator on Runpod Serverless, built with Flash.
 # deploy:  flash deploy
-from runpod_flash import DataCenter, Endpoint, GpuGroup, NetworkVolume
+from runpod_flash import DataCenter, Endpoint, GpuType, NetworkVolume
 
 DEFAULT_LYRICS = """[Verse]
 Neon fades along the lane
@@ -13,7 +13,7 @@ Every road begins with you"""
 
 @Endpoint(
     name="yue2-song",
-    gpu=[GpuGroup.ADA_24, GpuGroup.ADA_48_PRO],  # YuE2 needs a BF16 GPU with 24 GB+ (4090, else 48 GB Ada)
+    gpu=GpuType.NVIDIA_GEFORCE_RTX_4090,  # YuE2 needs a BF16 GPU with 24 GB; a single GpuType pins the exact card
     datacenter=DataCenter.US_IL_1,  # a network volume lives in one datacenter, so pin workers to it
     workers=(0, 1),  # scale to zero when idle
     # YuE2 isn't on PyPI, so install its official release wheel from GitHub.
